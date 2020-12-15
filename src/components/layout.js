@@ -38,6 +38,9 @@ export default ({ children }) => {
               <Sidebar edges={data.topics.edges}/>
             </div> */}
           </div>
+          <div className="footer">
+            <div className="footer__icon"> Home16 © 2 0 2 0</div>
+           </div>
         </div>
       )}
     />

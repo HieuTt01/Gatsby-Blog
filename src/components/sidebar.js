@@ -9,6 +9,7 @@ export default props => {
   let categories = []
 
   edges.forEach(({ node }) => {
+    console.log(node)
     tags = Array.from(new Set([...tags, ...node.frontmatter.tags]))
     categories = Array.from(
       new Set([...categories, ...node.frontmatter.categories])

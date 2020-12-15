@@ -5,9 +5,18 @@ import { Link } from "gatsby"
 export default ({ data }) => {
   return (
     <Layout>
-      <h1> Latest posts </h1>
+      {/* <h1> Latest posts </h1> */}
       {data.allMarkdownRemark.edges.map(({ node }, index) =>
-        <div key={index}>
+        <div key={index} className="post">
+          <h3>
+            <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
+            <span style={{color: `#BBB`}}>— {node.frontmatter.date}</span>
+          </h3>
+          <p>{node.excerpt}</p>
+        </div>
+      )}
+      {data.allMarkdownRemark.edges.map(({ node }, index) =>
+        <div key={index} className="post">
           <h3>
             <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
             <span style={{color: `#BBB`}}>— {node.frontmatter.date}</span>
@@ -23,7 +32,7 @@ export const query = graphql`
   query {
     allMarkdownRemark(
         sort: {order: DESC, fields: [frontmatter___date] }
-        limit: 1000
+        limit: 9
       ) {
       edges {
         node {
@@ -31,7 +40,7 @@ export const query = graphql`
             title
             date(formatString: "DD/MM/YYYY")
           }
-          excerpt
+          excerpt(format: PLAIN, pruneLength: 300)
           fields {
             slug
           }

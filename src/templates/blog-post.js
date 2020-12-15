@@ -1,6 +1,7 @@
 import React,{ useEffect } from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
+import  "../components/layout.css";
 import Prism from "prismjs";
 // import Prismcode from "./prism" 
 
@@ -12,7 +13,7 @@ export default ({ data }) => {
   return (
     <Layout>
     {/* <Prismcode language="js" code={post.html}/> */}
-      <div>
+      <div className="post-detail">
         <h1>{post.frontmatter.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </div>
